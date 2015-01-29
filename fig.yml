@@ -1,0 +1,6 @@
+git:
+ build: /home/frl/ownCloud/dockgen/dockerfiles/git
+ hostname: git
+ ports:
+ - 22
+ command: /usr/bin/supervisord -n
