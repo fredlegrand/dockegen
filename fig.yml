@@ -1,6 +1,40 @@
-git:
- build: /home/frl/ownCloud/dockgen/dockerfiles/git
- hostname: git
+puppet:
+ build: /home/frl/ownCloud/dockgen/dockerfiles/puppet
+ hostname: puppet
  ports:
+ - 8140
  - 22
  command: /usr/bin/supervisord -n
+web1:
+ build: /home/frl/ownCloud/dockgen/dockerfiles/drupal
+ hostname: web1
+ links:
+ - db1:db
+ ports:
+ - 80:80
+ - 22
+ command: /usr/bin/supervisord -n
+db1:
+ build: /home/frl/ownCloud/dockgen/dockerfiles/mariadb
+ hostname: db1
+ ports:
+ - 3306
+ - 22
+ command: /usr/bin/supervisord -n
+web2:
+ build: /home/frl/ownCloud/dockgen/dockerfiles/drupal
+ hostname: web1
+ links:
+ - db2:db
+ ports:
+ - 81:80
+ - 22
+ command: /usr/bin/supervisord -n
+db2:
+ build: /home/frl/ownCloud/dockgen/dockerfiles/mariadb
+ hostname: db1
+ ports:
+ - 3306
+ - 22
+ command: /usr/bin/supervisord -n
+

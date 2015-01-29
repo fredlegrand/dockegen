@@ -18,6 +18,10 @@ RUN apt-get install -y puppetmaster
 RUN apt-get install -y apache2
 RUN apt-get install -y gettext
 RUN apt-get install -y ssh
+RUN apt-get install -y mariadb-server
+RUN apt-get install -y drupal7
+
+
 
 RUN echo "Europe/Zurich" > /etc/timezone
 RUN cp /usr/share/zoneinfo/Europe/Zurich /etc/localtime
