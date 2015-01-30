@@ -1,38 +1,46 @@
 puppet:
- build: /home/frl/ownCloud/dockgen/dockerfiles/puppet
+ build: /home/frl/dockgen/dockerfiles/puppet
  hostname: puppet
+ volumes:
+ - /home/frl/dockgen/puppet:/etc/puppet
  ports:
- - 8140
+ - 8140:8140
  - 22
  command: /usr/bin/supervisord -n
 web1:
- build: /home/frl/ownCloud/dockgen/dockerfiles/drupal
+ build: /home/frl/dockgen/dockerfiles/drupal
  hostname: web1
  links:
  - db1:db
+ - puppet:puppet
  ports:
  - 80:80
  - 22
  command: /usr/bin/supervisord -n
 db1:
- build: /home/frl/ownCloud/dockgen/dockerfiles/mariadb
+ build: /home/frl/dockgen/dockerfiles/mariadb
  hostname: db1
+ links:
+ - puppet:puppet
  ports:
  - 3306
  - 22
  command: /usr/bin/supervisord -n
 web2:
- build: /home/frl/ownCloud/dockgen/dockerfiles/drupal
- hostname: web1
+ build: /home/frl/dockgen/dockerfiles/drupal
+ hostname: web2
  links:
  - db2:db
+ - puppet:puppet
  ports:
  - 81:80
  - 22
  command: /usr/bin/supervisord -n
 db2:
- build: /home/frl/ownCloud/dockgen/dockerfiles/mariadb
- hostname: db1
+ build: /home/frl/dockgen/dockerfiles/mariadb
+ hostname: db2
+ links:
+ - puppet:puppet
  ports:
  - 3306
  - 22
