@@ -21,11 +21,12 @@ RUN apt-get install -y ssh
 RUN apt-get install -y mariadb-server
 RUN apt-get install -y drupal7
 
-
-
 RUN echo "Europe/Zurich" > /etc/timezone
 RUN cp /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 RUN mkdir /var/run/sshd
+
+ADD supervisor_puppet.conf /etc/supervisor/conf.d/puppet.conf
+RUN puppet agent --enable
 
 EXPOSE 22
 CMD ["/usr/bin/supervisord","-n"]
