@@ -1,0 +1,59 @@
+body:before {
+
+    position: fixed;
+
+    bottom: 50px;
+
+    right: -85px;
+
+    width: 300px;
+
+
+
+    z-index: 1000;
+
+
+
+    background-color: #EF7601;
+
+    border: solid 2px #F49F4C;
+
+
+
+    color: white;
+
+    -moz-box-shadow: 0px 0px 10px #888;
+
+    -webkit-box-shadow: 0px 0px 10px #888;
+
+    box-shadow: 0px 0px 10px #888;
+
+    text-align: center;
+
+    transform: rotate(45deg);
+
+    -ms-transform: rotate(-45deg);
+
+    -moz-transform: rotate(-45deg);
+
+    -webkit-transform: rotate(-45deg);
+
+    -o-transform: rotate(-45deg);
+
+    height: 25px;
+
+    padding-top: 7px;
+
+    font-family: Helvetica;
+
+    font-size: 14px;
+
+
+
+    content: 'DEV';
+
+    background-color: #007200;
+
+    border-color: #499a49;
+
+}
