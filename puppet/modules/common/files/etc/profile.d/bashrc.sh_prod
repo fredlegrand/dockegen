@@ -1,2 +1,0 @@
-# .bashrc
-export PS1="\u@\[\e[41m\]\h\[\e[m\] - [\$PWD] - \d \A \n> "

@@ -1,1 +1,0 @@
-* * * * * /usr/bin/mysqldump -uroot --all-databases > /var/lib/mysql/backup.sql 2>/var/lib/mysql/backup.err
